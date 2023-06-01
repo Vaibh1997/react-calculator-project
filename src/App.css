@@ -462,7 +462,7 @@ outline: 3px solid rgb(17, 224, 247);
       justify-content: space-evenly;
       align-items: center;
       margin-left: 0px;
-      margin-bottom: 70px;
+      /* margin-bottom: 70px; */
       flex-direction: column;
      
     }

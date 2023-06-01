@@ -283,7 +283,8 @@ outline: 3px solid rgb(17, 224, 247);
       flex-direction: column;
       justify-content: center;
       align-items: center;
-     background-color:#EEEEEE;
+     background-color:hsl(0, 0%, 93%);
+     /* margin-bottom: 0px; */
     }
 
     .form_piechart{
@@ -394,7 +395,7 @@ outline: 3px solid rgb(17, 224, 247);
        background-color:#EEEEEE;
        padding:0px 13px ;
        box-sizing: border-box;
-       margin-bottom: 0px;
+       margin-bottom: 0px !important;
       }
       .slider_forall{
         width: 100%!important;

@@ -78,8 +78,6 @@ export const Home_loan = () => {
     return `${value}L`;
   }
 
-  
-
   useEffect(() => {
     const r = interest / 12 / 100;
     console.log(r);
@@ -171,8 +169,6 @@ export const Home_loan = () => {
         </span>
       </div>
 
-   
-
       <div
         className="slider_forall"
         style={{ width: "700px", margin: "0px 140px" }}
@@ -194,7 +190,7 @@ export const Home_loan = () => {
 
         <input
           className="input"
-          value={tenure}
+          value={tenure === 0 ? tenure + 1 : tenure}
           onChange={(e) => {
             settenure(e.target.value);
           }}
@@ -233,7 +229,6 @@ export const Home_loan = () => {
         </label>
       </div>
 
-
       <div
         className="slider_forall"
         style={{ width: "700px", margin: "0px 140px" }}
@@ -255,7 +250,7 @@ export const Home_loan = () => {
           <label>loan emi</label>
           <h5>
             <CurrencyRupeeIcon />
-            {loan === "NaN" ? 0 : loan}
+            {loan === "NaN" || loan === "∞" ? 0 : loan}
           </h5>
 
           <label>total interest payable</label>
@@ -277,20 +272,42 @@ export const Home_loan = () => {
         <div className="pieChart">
           <h3>Break-up of Total Payment</h3>
 
-          <PieChart
-            style={{ transform: "rotate(-90deg)" }}
-            data={[
-              { title: Number(100 - pieData), value: Number(100 - pieData), color: "#88A825" },
-              { title: Number(pieData), value: Number(pieData), color: "#ED8C2B" },
-            ]}
-          />
+          {loan === "0" ? (
+            <p
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                // color: "#fff",
+                fontWeight: "bold",
+                height: "100%",
+              }}
+            >
+              0%
+            </p>
+          ) : (
+            <PieChart
+              style={{ transform: "rotate(-90deg)" }}
+              data={[
+                {
+                  title: Number(100 - pieData),
+                  value: Number(100 - pieData),
+                  color: "#88A825",
+                },
+                {
+                  title: Number(pieData),
+                  value: Number(pieData),
+                  color: "#ED8C2B",
+                },
+              ]}
+            />
+          )}
         </div>
       </div>
       <div className="labels">
-          <h5 className="orange">Total Interest</h5>
-            <h5 className="green">Principal Loan Amount</h5>
-           
-          </div>
+        <h5 className="orange">Total Interest</h5>
+        <h5 className="green">Principal Loan Amount</h5>
+      </div>
     </div>
   );
 };

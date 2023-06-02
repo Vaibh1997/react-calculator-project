@@ -237,7 +237,7 @@ export const Home_loan = () => {
           aria-label="Always visible"
           value={tenure}
           // getAriaValueText={valueintrst}
-          min={0}
+          min={1}
           max={360}
           onChange={(e, newValue) => {
             settenure(newValue);
@@ -272,7 +272,7 @@ export const Home_loan = () => {
         <div className="pieChart">
           <h3>Break-up of Total Payment</h3>
 
-          {loan === "0" ? (
+          {loan === "0"  || tenure ===0 ? (
             <p
               style={{
                 display: "flex",

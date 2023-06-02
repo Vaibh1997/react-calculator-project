@@ -182,7 +182,7 @@ export const Car_loan = () => {
 
         <input
           className="input"
-          value={tenure}
+          value={tenure === 0 ? tenure + 1 : tenure}
           onChange={(e) => {
             settenure(e.target.value);
           }}
@@ -220,7 +220,7 @@ export const Car_loan = () => {
           aria-label="Always visible"
           value={tenure}
           // getAriaValueText={valueintrst}
-          min={0}
+          min={1}
           max={7}
           onChange={(e, newValue) => {
             settenure(newValue);
@@ -233,7 +233,7 @@ export const Car_loan = () => {
           <label>loan emi</label>
           <h5>
             <CurrencyRupeeIcon />
-            {loan==="NaN"? 0:loan}
+            {loan==="NaN"  || loan === "∞"? 0:loan}
           </h5>
 
           <label>total interest payable</label>
@@ -254,13 +254,37 @@ export const Car_loan = () => {
 
         <div className="pieChart">
           <h3>Break-up of Total Payment</h3>
-          <PieChart
-            style={{ transform: "rotate(-90deg)" }}
-            data={[
-              { title: Number(100 - pieData), value: Number(100 - pieData), color: "#88A825" },
-              { title: Number(pieData), value: Number(pieData), color: "#ED8C2B" },
-            ]}
-          />
+          {loan === "0"  || tenure ===0 ? (
+            <p
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                // color: "#fff",
+                fontWeight: "bold",
+                height: "100%",
+              }}
+            >
+              0%
+            </p>
+          ) : (
+            <PieChart
+              style={{ transform: "rotate(-90deg)" }}
+              data={[
+                {
+                  title: Number(100 - pieData),
+                  value: Number(100 - pieData),
+                  color: "#88A825",
+                },
+                {
+                  title: Number(pieData),
+                  value: Number(pieData),
+                  color: "#ED8C2B",
+                },
+              ]}
+            />
+          )}
+
 
         
       

@@ -33,7 +33,7 @@ export const Personal_loan = () => {
   };
   
   const Year = () => {
-   settenure( (tenure / 12).toFixed(1))
+   settenure( Math.round(tenure / 12))
    
    
     setCurrentTenureSelection("year");
